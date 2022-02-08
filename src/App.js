@@ -22,6 +22,16 @@ const About = () => {
     )
 }
 
+const Review = () => {
+    return (
+        <>
+            <h1>Review</h1>
+            <h2>La liste des cours</h2>
+            <Link to='/'>Home</Link>
+        </>
+    )
+}
+
 const Course = () => {
     const {course} = useParams()
     return (
@@ -39,6 +49,7 @@ const App = () => {
                 <Route path='/' element={<Home/>}/>
                 <Route path='about' element={<About/>}/>
                 <Route path='courses/:course' element={<Course/>}/>
+                <Route path='courses/review' element={<Review/>}/>
             </Routes>
         </div>
     );
