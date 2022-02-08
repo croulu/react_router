@@ -1,7 +1,7 @@
 import React from "react";
 import './App.css';
 
-import {Routes, Route, Link} from 'react-router-dom';
+import {Routes, Route, Link, useParams} from 'react-router-dom';
 
 
 const Home = () => {
@@ -22,12 +22,23 @@ const About = () => {
     )
 }
 
+const Course = () => {
+    const {course} = useParams()
+    return (
+        <>
+            <h1>Course : {course}</h1>
+            <Link to='/'>Home</Link>
+        </>
+    )
+}
+
 const App = () => {
     return (
         <div className="App">
             <Routes>
                 <Route path='/' element={<Home/>}/>
                 <Route path='about' element={<About/>}/>
+                <Route path='courses/:course' element={<Course/>}/>
             </Routes>
         </div>
     );
