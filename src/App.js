@@ -1,15 +1,25 @@
 import React from "react";
 import './App.css';
 
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, Link} from 'react-router-dom';
 
 
 const Home = () => {
-    return <h1>Home</h1>
+    return (
+        <>
+            <h1>Home</h1>
+            <Link to='about'>About</Link>
+        </>
+    )
 }
 
 const About = () => {
-    return <h1>About</h1>
+    return (
+        <>
+            <h1>About</h1>
+            <Link to='/'>Home</Link>
+        </>
+    )
 }
 
 const App = () => {
