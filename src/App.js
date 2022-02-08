@@ -32,6 +32,15 @@ const About = () => {
     )
 }
 
+const NotFound = () => {
+    return (
+        <>
+            <h1>Not found !</h1>
+            <Link to='/'>Home</Link>
+        </>
+    )
+}
+
 const HomeCourse = () => {
     return (
         <>
@@ -70,6 +79,7 @@ const App = () => {
                     <Route path=':course' element={<Course/>}/>
                     <Route path='review' element={<Review/>}/>
                 </Route>
+                <Route path='*' element={<NotFound/>}></Route>
             </Routes>
         </div>
     );
