@@ -32,6 +32,15 @@ const About = () => {
     )
 }
 
+const HomeCourse = () => {
+    return (
+        <>
+            <h1>All courses (home relatif)</h1>
+            <Link to='/'>Home</Link>
+        </>
+    )
+}
+
 const Review = () => {
     return (
         <>
@@ -57,6 +66,7 @@ const App = () => {
                 <Route path='/' element={<Home/>}/>
                 <Route path='about' element={<About/>}/>
                 <Route path='courses' element={<Courses/>}>
+                    <Route path='/courses/' element={<HomeCourse/>}/>
                     <Route path=':course' element={<Course/>}/>
                     <Route path='review' element={<Review/>}/>
                 </Route>
