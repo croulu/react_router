@@ -17,7 +17,12 @@ const Courses = () => {
     return (
         <>
             <h1>Courses</h1>
-            <Outlet/>
+            { /* <Outlet/> */}
+            <Routes>
+                <Route path='/courses/' element={<HomeCourse/>}/>
+                <Route path=':course' element={<Course/>}/>
+                <Route path='review' element={<Review/>}/>
+            </Routes>
             <Link to='/'>Home</Link> - <Link to='js'>Javascript</Link> - <Link to='react'>React</Link> - <Link
             to='review'>Review</Link>
         </>
@@ -99,12 +104,8 @@ const App = () => {
                 <Routes>
                     <Route path='/' element={<Home/>}/>
                     <Route path='about' element={<About/>}/>
-                    <Route path='courses' element={<Courses/>}>
-                        <Route path='/courses/' element={<HomeCourse/>}/>
-                        <Route path=':course' element={<Course/>}/>
-                        <Route path='review' element={<Review/>}/>
-                    </Route>
-                    <Route path='*' element={<NotFound/>}></Route>
+                    <Route path='courses/*' element={<Courses/>}/>
+                    <Route path='*' element={<NotFound/>}/>
                 </Routes>
             </div>
         </div>
