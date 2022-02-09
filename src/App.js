@@ -1,7 +1,7 @@
 import React from "react";
 import './App.css';
 
-import {Routes, Route, Link, useParams, Outlet, useNavigate} from 'react-router-dom';
+import {Routes, Route, Link, useParams, Outlet, useNavigate, NavLink} from 'react-router-dom';
 
 
 const Home = () => {
@@ -79,7 +79,9 @@ const Course = () => {
 const HomeMenu = () => {
     return (
         <>
-            <Link to='/'>Home</Link> - <Link to='/about'>About</Link> - <Link to='/courses'>Courses</Link>
+            <Link to='/'>Home</Link>{' - '}
+            <NavLink activeClassName='active' to='/about'>About</NavLink>{' - '}
+            <Link to='/courses'>Courses</Link>
         </>
     )
 }
