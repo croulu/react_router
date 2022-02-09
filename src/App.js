@@ -10,6 +10,7 @@ const Home = () => {
         <>
             <h1>Home</h1>
             <Link to='about'>About</Link> - <Link to='courses'>Courses</Link>
+            <Form/>
         </>
     )
 }
@@ -33,6 +34,9 @@ const Courses = () => {
 }
 
 const About = () => {
+    const location = useLocation()
+    console.log(location)
+
     return (
         <>
             <h1>About</h1>
@@ -117,6 +121,25 @@ const Layout = () => (
         <footer>footer</footer>
     </div>
 )
+
+const Form = () => {
+    const navigate = useNavigate()
+    const [name, setName] = useState('')
+
+    const handleChange = event => setName(event.target.value)
+
+    const handleSubmit = event => {
+        event.preventDefault()
+        navigate('/about', {state: {name}})
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <input onChange={handleChange} value={name} type='text' placeholder='Name'/>
+            <button type='submit'>Submit</button>
+        </form>
+    )
+}
 
 const App = () => {
     return (
