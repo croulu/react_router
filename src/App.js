@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import './App.css';
 
-import {Routes, Route, Link, useParams, Outlet, useNavigate, NavLink} from 'react-router-dom';
+import {Routes, Route, Link, useParams, Outlet, useNavigate, NavLink, useLocation} from 'react-router-dom';
 
+const useQuery = () => new URLSearchParams(useLocation().search)
 
 const Home = () => {
     return (
@@ -68,10 +69,16 @@ const Review = () => {
 }
 
 const Course = () => {
+    const query = useQuery()
+    const [coupon, setCoupon] = useState('')
+
+    useEffect(() => setCoupon(query.get('coupon')))
+
     const {course} = useParams()
     return (
         <>
             <h1>Course : {course}</h1>
+            <h2>Coupon = {coupon}</h2>
         </>
     )
 }
@@ -80,7 +87,7 @@ const HomeMenu = () => {
     return (
         <>
             <Link to='/'>Home</Link>{' - '}
-            <NavLink activeClassName='active' to='/about'>About</NavLink>{' - '}
+            <NavLink activeclassname='active' to='/about'>About</NavLink>{' - '}
             <Link to='/courses'>Courses</Link>
         </>
     )
@@ -89,7 +96,8 @@ const HomeMenu = () => {
 const CoursesMenu = () => {
     return (
         <>
-            <Link to='/'>Home</Link> - <Link to='js'>Javascript</Link> - <Link to='react'>React</Link> - <Link
+            <Link to='/'>Home</Link> - <Link to='js?coupon=xyz'>Javascript</Link> - <Link
+            to='react'>React</Link> - <Link
             to='review'>Review</Link>
         </>
     )
