@@ -1,7 +1,7 @@
 import React from "react";
 import './App.css';
 
-import {Routes, Route, Link, useParams, Outlet} from 'react-router-dom';
+import {Routes, Route, Link, useParams, Outlet, useNavigate} from 'react-router-dom';
 
 
 const Home = () => {
@@ -14,10 +14,12 @@ const Home = () => {
 }
 
 const Courses = () => {
+    const navigate = useNavigate()
     return (
         <>
             <h1>Courses</h1>
             { /* <Outlet/> */}
+            <button onClick={() => navigate('/')}>HOME</button>
             <Routes>
                 <Route path='/courses/' element={<HomeCourse/>}/>
                 <Route path=':course' element={<Course/>}/>
