@@ -17,8 +17,9 @@ const Courses = () => {
     return (
         <>
             <h1>Courses</h1>
-            <Outlet />
-            <Link to='/'>Home</Link> - <Link to='js'>Javascript</Link> - <Link to='react'>React</Link> - <Link to='review'>Review</Link>
+            <Outlet/>
+            <Link to='/'>Home</Link> - <Link to='js'>Javascript</Link> - <Link to='react'>React</Link> - <Link
+            to='review'>Review</Link>
         </>
     )
 }
@@ -68,19 +69,44 @@ const Course = () => {
     )
 }
 
+const HomeMenu = () => {
+    return (
+        <>
+            <Link to='/'>Home</Link> - <Link to='/about'>About</Link> - <Link to='/courses'>Courses</Link>
+        </>
+    )
+}
+
+const CoursesMenu = () => {
+    return (
+        <>
+            <Link to='/'>Home</Link> - <Link to='js'>Javascript</Link> - <Link to='react'>React</Link> - <Link
+            to='review'>Review</Link>
+        </>
+    )
+}
+
 const App = () => {
     return (
         <div className="App">
-            <Routes>
-                <Route path='/' element={<Home/>}/>
-                <Route path='about' element={<About/>}/>
-                <Route path='courses' element={<Courses/>}>
-                    <Route path='/courses/' element={<HomeCourse/>}/>
-                    <Route path=':course' element={<Course/>}/>
-                    <Route path='review' element={<Review/>}/>
-                </Route>
-                <Route path='*' element={<NotFound/>}></Route>
-            </Routes>
+            <div>
+                <Routes>
+                    <Route path='/' element={<HomeMenu/>}/>
+                    <Route path='courses' element={<CoursesMenu/>}/>
+                </Routes>
+            </div>
+            <div>
+                <Routes>
+                    <Route path='/' element={<Home/>}/>
+                    <Route path='about' element={<About/>}/>
+                    <Route path='courses' element={<Courses/>}>
+                        <Route path='/courses/' element={<HomeCourse/>}/>
+                        <Route path=':course' element={<Course/>}/>
+                        <Route path='review' element={<Review/>}/>
+                    </Route>
+                    <Route path='*' element={<NotFound/>}></Route>
+                </Routes>
+            </div>
         </div>
     );
 }
