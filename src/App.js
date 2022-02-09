@@ -93,25 +93,32 @@ const CoursesMenu = () => {
     )
 }
 
+const Layout = () => (
+    <div className="App">
+        <div>
+            <Routes>
+                <Route path='/*' element={<HomeMenu/>}/>
+                <Route path='courses/*' element={<CoursesMenu/>}/>
+            </Routes>
+        </div>
+        <div>
+            <Outlet/>
+        </div>
+        <footer>footer</footer>
+    </div>
+)
+
 const App = () => {
     return (
-        <div className="App">
-            <div>
-                <Routes>
-                    <Route path='/*' element={<HomeMenu/>}/>
-                    <Route path='courses/*' element={<CoursesMenu/>}/>
-                </Routes>
-            </div>
-            <div>
-                <Routes>
-                    <Route path='/' element={<Home/>}/>
-                    <Route path='about' element={<About/>}/>
-                    <Route path='courses/*' element={<Courses/>}/>
-                    <Route path='*' element={<NotFound/>}/>
-                </Routes>
-            </div>
-        </div>
-    );
+        <Routes>
+            <Route path='/' element={<Layout/>}>
+                <Route path='/' element={<Home/>}/>
+                <Route path='about' element={<About/>}/>
+                <Route path='courses/*' element={<Courses/>}/>
+                <Route path='*' element={<NotFound/>}/>
+            </Route>
+        </Routes>
+    )
 }
 
 export default App;
