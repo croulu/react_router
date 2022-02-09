@@ -91,8 +91,8 @@ const App = () => {
         <div className="App">
             <div>
                 <Routes>
-                    <Route path='/' element={<HomeMenu/>}/>
-                    <Route path='courses' element={<CoursesMenu/>}/>
+                    <Route path='/*' element={<HomeMenu/>}/>
+                    <Route path='courses/*' element={<CoursesMenu/>}/>
                 </Routes>
             </div>
             <div>
